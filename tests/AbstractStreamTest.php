@@ -13,7 +13,9 @@ abstract class AbstractStreamTest extends \PHPUnit_Framework_TestCase
     {
         $stream = $this->getSut();
 
-        $result = $stream->map(function ($value) { return 2 * $value; });
+        $result = $stream->map(function ($value) {
+            return 2 * $value;
+        });
 
         $this->assertInstanceOf(Stream::class, $result);
 
@@ -26,7 +28,9 @@ abstract class AbstractStreamTest extends \PHPUnit_Framework_TestCase
     {
         $stream = $this->getSut();
 
-        $result = $stream->filter(function ($value) { return 1 === $value % 2; });
+        $result = $stream->filter(function ($value) {
+            return 1 === $value % 2;
+        });
 
         $this->assertInstanceOf(Stream::class, $result);
 
@@ -39,7 +43,9 @@ abstract class AbstractStreamTest extends \PHPUnit_Framework_TestCase
     {
         $stream = $this->getSut();
 
-        $result = $stream->reduce(function ($carray, $value) { return $carray + $value; });
+        $result = $stream->reduce(function ($subTotal, $addend) {
+            return $subTotal + $addend;
+        });
 
         $this->assertEquals(4950, $result);
     }
