@@ -25,4 +25,9 @@ abstract class Stream
      * @return mixed
      */
     abstract public function reduce(callable $reduceCallback, $initial = null);
+
+    /**
+     * @return array
+     */
+    abstract public function toArray();
 }

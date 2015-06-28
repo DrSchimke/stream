@@ -43,7 +43,7 @@ class ArrayStream extends Stream implements \IteratorAggregate
      */
     public function filter(callable $filterCallback)
     {
-        return new static(array_filter($this->array, $filterCallback));
+        return new static(array_values(array_filter($this->array, $filterCallback)));
     }
 
     /**
@@ -63,5 +63,13 @@ class ArrayStream extends Stream implements \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayIterator($this->array);
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->array;
     }
 }

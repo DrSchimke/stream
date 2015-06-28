@@ -99,4 +99,18 @@ class IteratorStream extends Stream implements \IteratorAggregate
     {
         return $this->iterator;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        $result = [];
+
+        foreach ($this->iterator as $value) {
+            $result[] = $value;
+        }
+
+        return $result;
+    }
 }
