@@ -4,9 +4,11 @@
 
 Chainable stream wrapper for arrays and and other traversables.
 
-## Usage
+I use the term _stream_ not in the sense of PHP streamWrapper, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_.
 
-### Creating the stream
+## 1. Usage
+
+### 1.1 Creating the stream
 
 ```php
 use Sci\Stream\ArrayStream;
@@ -28,7 +30,7 @@ function generate()
 $stream = IteratorStream::create(generate());
 ```
 
-### Map
+### 1.2 Map
 
 ```php
 $incrementedValues = $stream->map(function ($value) {
@@ -36,7 +38,7 @@ $incrementedValues = $stream->map(function ($value) {
 });
 ```
 
-### Filter
+### 1.3 Filter
 
 ```php
 $smallerValues = $stream->filter(function ($value) {
@@ -44,7 +46,7 @@ $smallerValues = $stream->filter(function ($value) {
 });
 ```
 
-### Reduce
+### 1.4 Reduce
 
 ```php
 $sum = $stream->reduce(function ($sum, $value) {
@@ -52,7 +54,7 @@ $sum = $stream->reduce(function ($sum, $value) {
 });
 ```
 
-### Chaining
+### 1.5 Chaining
 
 Stream operations can be chained easily:
 
@@ -69,9 +71,9 @@ $stream
     });
 ```
 
-### Getting the Result
+### 1.6 Getting the Result
 
-To get a stream's content, use iteration with foreach or the Stream::toArray() method:
+To get a stream's content, use iteration with foreach or the ```Stream::toArray()``` method:
 
 ```php
 foreach ($stream as $value) {
@@ -79,4 +81,53 @@ foreach ($stream as $value) {
 }
 
 $array = $stream->toArray();
+```
+
+## 2. Extending
+
+The library is easily extensible by subclassing. For example, we could add convenient CSV parser as stream source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like _domain specific language_.
+
+```php
+class CsvStream extends IteratorStream {
+    public static function from($filename) {
+        return new parent(self::readCsv($filename));
+    }
+
+    public static function readCsv($filename) {
+        $fd = fopen($filename, 'r');
+        $header = fgetcsv($fd);
+        while ($row = fgetcsv($fd)) {
+            yield array_combine($header, $row);
+        }
+        fclose($fd);
+    }
+
+    public function where(array $condition) {
+        return $this->filter(function (array $row) use ($condition) {
+            return ...;
+        });
+    }
+
+    public function select(array $columns) {
+        return $this->map(function (array $row) use ($columns) {
+            $result = [];
+            foreach ($columns as $column) {
+                if (array_key_exists($column, $row)) {
+                    $result[column] = $row[$column];
+                }
+            }
+
+            return $result;
+        });
+    }
+
+    public function limit($offset, $limit) {
+        // ...
+    }
+}
+
+$csvStream = CsvStream::from('example.csv')
+    ->where(['first_name' => 'Peter'])
+    ->select(['first_name', 'last_name', 'street', 'zip_code', 'city'])
+    ->limit(0, 10);
 ```
