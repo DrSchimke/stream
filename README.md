@@ -4,11 +4,19 @@
 
 Chainable stream wrapper for arrays and and other traversables.
 
-I use the term _stream_ not in the sense of PHP streamWrapper, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_.
+Here I use the term _stream_ **not** in the sense of PHP streamWrappers, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_.
 
-## 1. Usage
+## 1. Installation
 
-### 1.1 Creating the stream
+Using [composer](https://getcomposer.org/download/):
+
+```bash
+composer require sci/stream dev-master
+```
+
+## 2. Usage
+
+### 2.1 Creating the stream
 
 ```php
 use Sci\Stream\ArrayStream;
@@ -30,7 +38,7 @@ function generate()
 $stream = IteratorStream::create(generate());
 ```
 
-### 1.2 Map
+### 2.2 Map
 
 ```php
 $incrementedValues = $stream->map(function ($value) {
@@ -38,7 +46,7 @@ $incrementedValues = $stream->map(function ($value) {
 });
 ```
 
-### 1.3 Filter
+### 2.3 Filter
 
 ```php
 $smallerValues = $stream->filter(function ($value) {
@@ -46,7 +54,7 @@ $smallerValues = $stream->filter(function ($value) {
 });
 ```
 
-### 1.4 Reduce
+### 2.4 Reduce
 
 ```php
 $sum = $stream->reduce(function ($sum, $value) {
@@ -54,7 +62,7 @@ $sum = $stream->reduce(function ($sum, $value) {
 });
 ```
 
-### 1.5 Chaining
+### 2.5 Chaining
 
 Stream operations can be chained easily:
 
@@ -71,7 +79,7 @@ $stream
     });
 ```
 
-### 1.6 Getting the Result
+### 2.6 Getting the Result
 
 To get a stream's content, use iteration with foreach or the ```Stream::toArray()``` method:
 
@@ -83,7 +91,7 @@ foreach ($stream as $value) {
 $array = $stream->toArray();
 ```
 
-## 2. Extending
+## 3. Extending
 
 The library is easily extensible by subclassing. For example, we could add convenient CSV parser as stream source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like _domain specific language_.
 
