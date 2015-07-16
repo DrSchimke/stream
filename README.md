@@ -101,15 +101,6 @@ class CsvStream extends IteratorStream {
         return new parent(self::readCsv($filename));
     }
 
-    public static function readCsv($filename) {
-        $fd = fopen($filename, 'r');
-        $header = fgetcsv($fd);
-        while ($row = fgetcsv($fd)) {
-            yield array_combine($header, $row);
-        }
-        fclose($fd);
-    }
-
     public function where(array $condition) {
         return $this->filter(function (array $row) use ($condition) {
             return ...;
@@ -131,6 +122,15 @@ class CsvStream extends IteratorStream {
 
     public function limit($offset, $limit) {
         // ...
+    }
+
+    private static function readCsv($filename) {
+        $fd = fopen($filename, 'r');
+        $header = fgetcsv($fd);
+        while ($row = fgetcsv($fd)) {
+            yield array_combine($header, $row);
+        }
+        fclose($fd);
     }
 }
 
