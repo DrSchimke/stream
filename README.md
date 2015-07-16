@@ -93,7 +93,7 @@ $array = $stream->toArray();
 
 ## 3. Extending
 
-The library is easily extensible by subclassing. For example, we could add convenient CSV parser as stream source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like _domain specific language_.
+The library is easily extensible by subclassing. For example, we could add convenient CSV parser as stream source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like _domain specific language_. (Find the complete example in [StreamExtendingTest](tests/StreamExtendingTest.php).)
 
 ```php
 class CsvStream extends IteratorStream {
