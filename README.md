@@ -4,7 +4,7 @@
 
 Chainable stream wrapper for arrays and and other traversables.
 
-Here I use the term _stream_ **not** in the sense of PHP streamWrappers, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_.
+Here I use the term _stream_ **not** in the sense of PHP streamWrappers, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_; actually an _infinite list of things_.
 
 ## 1. Installation
 
@@ -71,8 +71,8 @@ $stream
     ->filter(function ($value) {
         return $value < 5;
     })
-    ->reduce(function ($sum, $value) {
-        return $sum + $value;
+    ->map(function ($value) {
+        return 2 * $value;
     })
     ->reduce(function ($sum, $value) {
         return $sum + $value;
@@ -112,7 +112,7 @@ class CsvStream extends IteratorStream {
             $result = [];
             foreach ($columns as $column) {
                 if (array_key_exists($column, $row)) {
-                    $result[column] = $row[$column];
+                    $result[$column] = $row[$column];
                 }
             }
 
