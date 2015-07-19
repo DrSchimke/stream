@@ -12,7 +12,7 @@ class StreamExtendingTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_create_csv_stream()
     {
-        $csvStream = CsvStream::from(__DIR__ . '/example.csv')
+        $csvStream = CsvStream::from(__DIR__.'/example.csv')
             ->where(['first_name' => 'Peter'])
             ->select(['id', 'first_name', 'last_name', 'city'])
             ->limit(3, 5);

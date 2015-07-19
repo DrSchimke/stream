@@ -15,20 +15,20 @@ class IteratorStreamTest extends AbstractStreamTest
     }
 
     /**
-     * returns the system under test
+     * returns the system under test.
      *
      * @return Stream
      */
     protected function getSut()
     {
-        $array    = range(0, 99);
+        $array = range(0, 99);
         $iterator = new \ArrayIterator($array);
 
         return IteratorStream::create($iterator);
     }
 
     /**
-     * Generates the fibonacci sequence up to $max
+     * Generates the fibonacci sequence up to $max.
      *
      * @param int $max
      *

@@ -8,7 +8,7 @@ use Sci\Stream\Stream;
 class ArrayStreamTest extends AbstractStreamTest
 {
     /**
-     * returns the system under test
+     * returns the system under test.
      *
      * @return Stream
      */

@@ -26,7 +26,6 @@ class ArrayStream extends Stream implements \IteratorAggregate
     }
 
     /**
-     *
      * @param callable $mapCallback
      *
      * @return static

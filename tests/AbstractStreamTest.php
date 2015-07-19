@@ -5,7 +5,7 @@ namespace Sci\Tests\Stream;
 use Sci\Stream\Stream;
 
 /**
- * Common test base for all sub-classes of Stream (ArrayStream, IteratorStream)
+ * Common test base for all sub-classes of Stream (ArrayStream, IteratorStream).
  */
 abstract class AbstractStreamTest extends \PHPUnit_Framework_TestCase
 {
@@ -80,7 +80,7 @@ abstract class AbstractStreamTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns the system under test
+     * Returns the system under test.
      *
      * For these tests, the resulting Stream should provide a sequence of integers between 0 and 99.
      *

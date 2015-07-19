@@ -13,7 +13,7 @@ class PracticalTest extends \PHPUnit_Framework_TestCase
         return [
             [ArrayStream::create([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])],
             [IteratorStream::create(new \ArrayIterator([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))],
-            [IteratorStream::create($this->generate())]
+            [IteratorStream::create($this->generate())],
         ];
     }
 
@@ -99,5 +99,4 @@ class PracticalTest extends \PHPUnit_Framework_TestCase
             yield $i;
         }
     }
-
 }
