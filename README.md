@@ -68,7 +68,16 @@ $sum = $stream->reduce(function ($sum, $value) {
 Stream operations can be chained easily:
 
 ```php
-$stream
+$stream	geändert:       lib/ArrayStream.php
+	geändert:       lib/IteratorStream.php
+	geändert:       lib/Stream.php
+	geändert:       phpunit.xml.dist
+	geändert:       tests/AbstractStreamTest.php
+	geändert:       tests/ArrayStreamTest.php
+	geändert:       tests/IteratorStreamTest.php
+	geändert:       tests/PracticalTest.php
+	geändert:       tests/StreamExtendingTest.php
+
     ->filter(function ($value) {
         return $value < 5;
     })
@@ -140,3 +149,7 @@ $csvStream = CsvStream::from('example.csv')
     ->select(['first_name', 'last_name', 'street', 'zip_code', 'city'])
     ->limit(0, 10);
 ```
+
+## 4. License
+
+All contents of this package are licensed under the [MIT license].
