@@ -152,4 +152,4 @@ $csvStream = CsvStream::from('example.csv')
 
 ## 4. License
 
-All contents of this package are licensed under the [MIT license].
+All contents of this package are licensed under the [MIT license](LICENSE).
