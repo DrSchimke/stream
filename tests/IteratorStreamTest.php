@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the sci/stream package.
  *
  * (c) Sascha Schimke <sascha@schimke.me>
