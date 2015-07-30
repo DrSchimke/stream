@@ -5,7 +5,7 @@
 
 Chainable stream wrapper for arrays and and other traversables.
 
-Here I use the term _stream_ **not** in the sense of PHP streamWrappers, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_; actually an _infinite list of things_.
+Here I use the term _stream_ **not** in the sense of PHP streamWrappers, but more like in _Pipes and Filters Architecture_ – a streaming collection of _things_; actually an _infinite list of things_. (See [also](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/6a-streams-part-1/).)
 
 ## 1. Installation
 
@@ -68,16 +68,7 @@ $sum = $stream->reduce(function ($sum, $value) {
 Stream operations can be chained easily:
 
 ```php
-$stream	geändert:       lib/ArrayStream.php
-	geändert:       lib/IteratorStream.php
-	geändert:       lib/Stream.php
-	geändert:       phpunit.xml.dist
-	geändert:       tests/AbstractStreamTest.php
-	geändert:       tests/ArrayStreamTest.php
-	geändert:       tests/IteratorStreamTest.php
-	geändert:       tests/PracticalTest.php
-	geändert:       tests/StreamExtendingTest.php
-
+$stream
     ->filter(function ($value) {
         return $value < 5;
     })
