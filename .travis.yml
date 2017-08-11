@@ -1,5 +1,7 @@
 language: php
 
+dist: trusty
+
 env:
   - OPCODE_CACHE=apc
 
