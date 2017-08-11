@@ -12,21 +12,15 @@
 namespace Sci\Tests\Stream;
 
 use Sci\Stream\IteratorStream;
-use Sci\Stream\Stream;
 
 class IteratorStreamTest extends AbstractStreamTest
 {
-    public function testFibonacci()
-    {
-        $stream = new IteratorStream($this->fibonacci(1000));
-
-        $this->assertEquals([1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987], $stream->toArray());
-    }
-
     /**
-     * returns the system under test.
+     * Returns the system under test
      *
-     * @return Stream
+     * Here, the stream of integers 0..99 is realized as an IteratorStream, using an ArrayIterator.
+     *
+     * @return IteratorStream
      */
     protected function getSut()
     {
@@ -34,19 +28,5 @@ class IteratorStreamTest extends AbstractStreamTest
         $iterator = new \ArrayIterator($array);
 
         return IteratorStream::create($iterator);
-    }
-
-    /**
-     * Generates the fibonacci sequence up to $max.
-     *
-     * @param int $max
-     *
-     * @return \Generator
-     */
-    private function fibonacci($max)
-    {
-        for ($x = 0, $y = 1; $y <= $max; $z = $x + $y, $x = $y, $y = $z) {
-            yield $y;
-        }
     }
 }

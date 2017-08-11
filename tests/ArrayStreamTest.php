@@ -12,14 +12,15 @@
 namespace Sci\Tests\Stream;
 
 use Sci\Stream\ArrayStream;
-use Sci\Stream\Stream;
 
 class ArrayStreamTest extends AbstractStreamTest
 {
     /**
-     * returns the system under test.
+     * Returns the system under test
      *
-     * @return Stream
+     * Here, the stream of integers 0..99 is realized as an ArrayStream.
+     *
+     * @return ArrayStream
      */
     protected function getSut()
     {

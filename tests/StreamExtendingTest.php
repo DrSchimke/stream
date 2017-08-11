@@ -46,11 +46,21 @@ class StreamExtendingTest extends \PHPUnit_Framework_TestCase
 
 class CsvStream extends IteratorStream
 {
+    /**
+     * @param string $filename
+     *
+     * @return static
+     */
     public static function from($filename)
     {
         return static::create(self::readCsv($filename));
     }
 
+    /**
+     * @param array $conditions
+     *
+     * @return static
+     */
     public function where(array $conditions)
     {
         return $this->filter(function (array $row) use ($conditions) {
@@ -64,6 +74,11 @@ class CsvStream extends IteratorStream
         });
     }
 
+    /**
+     * @param array|string[] $columns
+     *
+     * @return static
+     */
     public function select(array $columns)
     {
         return $this->map(function (array $row) use ($columns) {
@@ -78,6 +93,12 @@ class CsvStream extends IteratorStream
         });
     }
 
+    /**
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return static
+     */
     public function limit($offset, $limit)
     {
         return $this->filter(function (array $row) use ($offset, $limit) {
@@ -88,7 +109,12 @@ class CsvStream extends IteratorStream
         });
     }
 
-    public static function readCsv($filename)
+    /**
+     * @param string $filename
+     *
+     * @return \Generator
+     */
+    private static function readCsv($filename)
     {
         $fd = fopen($filename, 'r');
         $header = fgetcsv($fd);

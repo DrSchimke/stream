@@ -11,8 +11,6 @@
 
 namespace Sci\Stream;
 
-use Traversable;
-
 class IteratorStream extends Stream implements \IteratorAggregate
 {
     /** @var \Traversable */
@@ -27,7 +25,7 @@ class IteratorStream extends Stream implements \IteratorAggregate
     }
 
     /**
-     * @param Traversable $iterator
+     * @param \Traversable $iterator
      *
      * @return static
      */
