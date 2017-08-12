@@ -20,9 +20,9 @@ class PracticalTest extends \PHPUnit_Framework_TestCase
     public function streamProvider()
     {
         return [
-            [ArrayStream::create([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])],
-            [IteratorStream::create(new \ArrayIterator([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))],
-            [IteratorStream::create($this->generate())],
+            [new ArrayStream([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])],
+            [new IteratorStream(new \ArrayIterator([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))],
+            [new IteratorStream($this->generate())],
         ];
     }
 

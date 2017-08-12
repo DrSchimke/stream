@@ -66,6 +66,8 @@ class ArrayStream extends Stream implements \IteratorAggregate
     }
 
     /**
+     * @see \IteratorAggregate::getIterator()
+     *
      * @return \Traversable
      */
     public function getIterator()

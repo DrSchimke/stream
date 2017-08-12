@@ -31,7 +31,7 @@ class GeneratorStreamTest extends AbstractStreamTest
      */
     protected function getSut()
     {
-        return IteratorStream::create($this->generator());
+        return new IteratorStream($this->generator());
     }
 
 

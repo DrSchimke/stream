@@ -24,10 +24,10 @@ use Sci\Stream\ArrayStream;
 use Sci\Stream\IteratorStream;
 
 // stream from array
-$stream = ArrayStream::create([3, 1, 4, 1, 5, 9, 2, 6, 5]);
+$stream = new ArrayStream([3, 1, 4, 1, 5, 9, 2, 6, 5]);
 
 // stream from ArrayIterator
-$stream = IteratorStream::create(new \ArrayIterator([2, 7, 1, 8, 2, 8]));
+$stream = new IteratorStream(new \ArrayIterator([2, 7, 1, 8, 2, 8]));
 
 // stream from Generator
 function generate()
@@ -36,7 +36,7 @@ function generate()
         yield $i;
     }
 }
-$stream = IteratorStream::create(generate());
+$stream = new IteratorStream(generate());
 ```
 
 ### 2.2 Map
@@ -94,7 +94,9 @@ $array = $stream->toArray();
 
 ## 3. Extending
 
-The library is easily extensible by subclassing. For example, we could add convenient CSV parser as stream source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like _domain specific language_. (Find the complete example in [StreamExtendingTest](tests/StreamExtendingTest.php).)
+The library is easily extensible by subclassing. For example, we could add conveniently a CSV parser as stream
+source or some wrapper methods around ```Stream::map()``` and ```Stream::filter()```, to achieve a SQL-like
+_domain specific language_. (Find the complete example in [StreamExtendingTest](tests/StreamExtendingTest.php).)
 
 ```php
 class CsvStream extends IteratorStream {

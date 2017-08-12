@@ -27,6 +27,6 @@ class IteratorStreamTest extends AbstractStreamTest
         $array = range(0, 99);
         $iterator = new \ArrayIterator($array);
 
-        return IteratorStream::create($iterator);
+        return new IteratorStream($iterator);
     }
 }

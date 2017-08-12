@@ -26,6 +26,6 @@ class ArrayStreamTest extends AbstractStreamTest
     {
         $array = range(0, 99);
 
-        return ArrayStream::create($array);
+        return new ArrayStream($array);
     }
 }
