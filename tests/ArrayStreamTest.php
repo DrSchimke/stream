@@ -9,12 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Sci\Tests\Stream;
+namespace Sci\Stream\Tests;
 
 use Sci\Stream\ArrayStream;
+use Sci\Stream\Stream;
 
 class ArrayStreamTest extends AbstractStreamTest
 {
+    /**
+     * @test
+     */
+    public function it_should_create()
+    {
+        $stream = ArrayStream::create([]);
+
+        self::assertInstanceOf(Stream::class, $stream);
+    }
+
     /**
      * Returns the system under test
      *

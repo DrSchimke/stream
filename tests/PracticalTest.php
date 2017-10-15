@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sci\Tests\Stream;
+namespace Sci\Stream\Tests;
 
 use Sci\Stream\ArrayStream;
 use Sci\Stream\IteratorStream;
@@ -102,6 +102,33 @@ class PracticalTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(20, $sum);
     }
 
+    /**
+     * @test
+     */
+    public function it_should_append()
+    {
+        $stream1 = new IteratorStream(new \ArrayIterator([1, 2, 3, 4, 5]));
+
+        $foo = function () {
+            yield 6;
+            yield 7;
+            yield 8;
+            yield 9;
+            yield 10;
+        };
+        $stream2 = new IteratorStream($foo());
+
+        $stream3 = $stream1->append($stream2);
+
+        $array = $stream3->toArray();
+
+        self::assertCount(10, $array);
+        self::assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], $array);
+    }
+
+    /**
+     * @return \Generator
+     */
     private function generate()
     {
         for ($i = 0; $i < 10; ++$i) {

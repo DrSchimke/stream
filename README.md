@@ -1,7 +1,6 @@
 # Stream
 
 [![Build Status](https://travis-ci.org/DrSchimke/stream.svg)](https://travis-ci.org/DrSchimke/stream)
-[![StyleCI](https://styleci.io/repos/38173393/shield)](https://styleci.io/repos/38173393)
 
 Chainable stream wrapper for arrays and and other traversables.
 

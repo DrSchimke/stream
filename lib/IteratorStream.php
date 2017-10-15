@@ -74,6 +74,30 @@ class IteratorStream extends Stream implements \IteratorAggregate
     }
 
     /**
+     * @return array
+     */
+    public function toArray()
+    {
+        $result = [];
+
+        foreach ($this->iterator as $value) {
+            $result[] = $value;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @see \IteratorAggregate::getIterator()
+     *
+     * @return \Traversable
+     */
+    public function getIterator()
+    {
+        return $this->iterator;
+    }
+
+    /**
      * @param callable $mapCallback
      *
      * @return \Generator
@@ -97,29 +121,5 @@ class IteratorStream extends Stream implements \IteratorAggregate
                 yield $value;
             }
         }
-    }
-
-    /**
-     * @see \IteratorAggregate::getIterator()
-     *
-     * @return \Traversable
-     */
-    public function getIterator()
-    {
-        return $this->iterator;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        $result = [];
-
-        foreach ($this->iterator as $value) {
-            $result[] = $value;
-        }
-
-        return $result;
     }
 }

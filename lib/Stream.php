@@ -39,4 +39,26 @@ abstract class Stream
      * @return array
      */
     abstract public function toArray();
+
+    /**
+     * @param Stream $other...
+     *
+     * @return Stream
+     */
+    public function append($stream)
+    {
+        $streams = func_get_args();
+
+        array_unshift($streams, $this);
+
+        $generator = function () use ($streams) {
+            foreach ($streams as $stream) {
+                foreach ($stream as $element) {
+                    yield $element;
+                }
+            }
+        };
+
+        return new IteratorStream($generator());
+    }
 }

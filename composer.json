@@ -8,13 +8,16 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^4.7",
-        "squizlabs/php_codesniffer": "^2.3",
-        "humbug/humbug": "^1.0-alpha2"
+        "squizlabs/php_codesniffer": "^2.3"
     },
     "autoload": {
         "psr-4": { 
-            "Sci\\Stream\\": "lib/",
-            "Sci\\Tests\\Stream\\": "tests/"
+            "Sci\\Stream\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sci\\Stream\\Tests\\": "tests/"
         }
     },
     "config": {

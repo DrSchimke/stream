@@ -66,6 +66,14 @@ class ArrayStream extends Stream implements \IteratorAggregate
     }
 
     /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->array;
+    }
+
+    /**
      * @see \IteratorAggregate::getIterator()
      *
      * @return \Traversable
@@ -73,13 +81,5 @@ class ArrayStream extends Stream implements \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayIterator($this->array);
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        return $this->array;
     }
 }

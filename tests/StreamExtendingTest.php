@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sci\Tests\Stream;
+namespace Sci\Stream\Tests;
 
 use Sci\Stream\IteratorStream;
 use Sci\Stream\Stream;
